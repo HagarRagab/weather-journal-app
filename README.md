@@ -17,4 +17,4 @@
     <li>By promises chaning I use then function that stores user fellings input value in a variable then get the date finally send a post request to server side to store the data into end point object.</li>
     <li>The postData function needs two arguments the route and object includes this data (temperature, date and fellings).</li>
     <li>By another chain I add the updateUi function that get all data from server side endpoint and update the DOM elements.</li>
-</ul>"# weather-journal-app" 
+</ul>
