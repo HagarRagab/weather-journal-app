@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Weather Journal</title>
+
+        <!-- Start google font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Satisfy&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+            rel="stylesheet"
+        />
+        <!-- End google font -->
+
+        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+        <link rel="stylesheet" href="./src/style.css" />
+        <script defer src="./src/main.js" type="module"></script>
+    </head>
+    <body>
+        <main class="app fade-in">
+            <!-- For screen reader -->
+            <h1 class="offscreen">
+                Responsive weather app powered by open weather A P I
+            </h1>
+            <section>
+                <header class="header">
+                    <div class="date-time">
+                        <p class="time"></p>
+                        <p class="date"></p>
+                    </div>
+                </header>
+
+                <section class="entry-sec">
+                    <form id="entry" class="entry" role="search">
+                        <label for="city" class="offscreen"
+                            >Enter city name</label
+                        >
+                        <input
+                            id="city"
+                            class="city-input"
+                            type="text"
+                            placeholder="Search city"
+                            role="searchbox"
+                            autocomplete="off"
+                        />
+                        <button
+                            id="generate"
+                            class="generate"
+                            type="submit"
+                            title="submit city"
+                            aria-label="submit city name to retrieve weather condition"
+                        >
+                            <svg class="search-icon">
+                                <use href="./src/img/icons.svg#search"></use>
+                            </svg>
+                            <svg class="reload-icon hidden">
+                                <use href="./src/img/icons.svg#reload"></use>
+                            </svg>
+                        </button>
+                    </form>
+                    <button
+                        id="geo-location"
+                        class="geo-location"
+                        title="Get your current location"
+                        aria-label="Get forecast for your current location"
+                    >
+                        <svg class="location-icon">
+                            <use href="./src/img/icons.svg#location"></use>
+                        </svg>
+                        <svg class="reload-icon hidden">
+                            <use href="./src/img/icons.svg#reload"></use>
+                        </svg>
+                    </button>
+                    <button
+                        id="toggle-unit"
+                        class="toggle-unit"
+                        title="Toggle measurement units"
+                        aria-label="Toggle between imperial and metric measurement units"
+                    >
+                        <svg class="toggle-icon">
+                            <use href="./src/img/icons.svg#toggle"></use>
+                        </svg>
+                        <svg class="reload-icon hidden">
+                            <use href="./src/img/icons.svg#reload"></use>
+                        </svg>
+                    </button>
+                </section>
+            </section>
+
+            <a href="#temp-description" class="skip-link"
+                >Skip to today's weather conditions</a
+            >
+            <section
+                id="temp-description"
+                class="temp-description fade-in"
+                role="region"
+                aria-labelledby="description-title"
+            >
+                <h2 id="description-title" class="description-title offscreen">
+                    Weather conditions for today
+                </h2>
+            </section>
+
+            <a href="#output-forecast" class="skip-link"
+                >Skip to week forecast</a
+            >
+            <section
+                id="output-forecast"
+                class="output-forecast"
+                role="region"
+                aria-labelledby="forecast-title"
+            >
+                <h2 id="forecast-title" class="forecast-title offscreen">
+                    forecast fot the current week
+                </h2>
+                <img
+                    class="search-city"
+                    src="search-city.png"
+                    alt="search city"
+                />
+            </section>
+
+            <p id="confirmation" class="offscreen" aria-live="polite"></p>
+        </main>
+    </body>
+</html>
