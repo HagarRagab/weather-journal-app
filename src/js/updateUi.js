@@ -12,7 +12,7 @@ const generateMarkupOutput = (data, tempUnitSymbol) => {
             <div class="next">
                 <div class="label">${forecast.date}</div>
                 <div class="icon">
-                    <img src='http://openweathermap.org/img/wn/${forecast.icon}.png' alt=${forecast.description} />
+                    <img src='https://openweathermap.org/img/wn/${forecast.icon}.png' alt=${forecast.description} />
                 </div>
                 <div class="degree">${forecast.temperature}&deg; <span>${tempUnitSymbol}</span></div>
             </div>
@@ -23,7 +23,7 @@ const generateMarkupOutput = (data, tempUnitSymbol) => {
         <div class="output fade-in">
             <div class="today">
                 <div class="icon">
-                    <img src='http://openweathermap.org/img/wn/${
+                    <img src='https://openweathermap.org/img/wn/${
                         data.todayWeather.icon
                     }.png' alt="" />
                 </div>
@@ -47,7 +47,7 @@ const generateMarkupDescription = function (
     return `
         <div class="today-forecast fade-in">
             <div class="icon">
-                <img src='http://openweathermap.org/img/wn/${data.todayWeather.icon}.png' alt="${data.todayWeather.description}" />
+                <img src='https://openweathermap.org/img/wn/${data.todayWeather.icon}.png' alt="${data.todayWeather.description}" />
             </div>
             <div class="today">
                 <div class="degree">${data.todayWeather.temperature}&deg; <span>${tempUnitSymbol}</span></div>
