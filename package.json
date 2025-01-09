@@ -1,18 +1,18 @@
 {
-  "name": "app",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "vite": "^6.0.5"
-  },
-  "dependencies": {
-    "fetch": "^1.1.0",
-    "node": "^22.13.0"
-  }
+    "name": "weather-journal-app",
+    "version": "1.0.0",
+    "description": "weather journal app",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "fetch-blob": "^4.0.0",
+        "formdata-polyfill": "^4.0.10",
+        "node-fetch": "^3.3.2"
+    }
 }

@@ -1,16 +1,23 @@
 import { API_URL } from "../src/js/config";
-const fetch = require("node-fetch");
+// import fetch from "node-fetch";
 
 const { WEATHER_API_KEY } = process.env;
 
 // defining serverless function
-exports.handler = async (event, context) => {
-    const params = JSON.parse(event.body);
+export async function handler(event, context) {
+    const params = event.body && JSON.parse(event.body);
     const { cityName, lat, lon, searchBy, measurementUnit } = params;
 
     const query =
         searchBy === "cityName" ? `?q=${cityName}` : `?lat=${lat}&lon=${lon}`;
 
+    if (!WEATHER_API_KEY)
+        return {
+            statusCode: 500,
+            body: JSON.stringify({
+                message: "Missing API key",
+            }),
+        };
     const url = `${API_URL}${query}&appid=${WEATHER_API_KEY}&units=${measurementUnit}`;
 
     try {
@@ -26,4 +33,4 @@ exports.handler = async (event, context) => {
             body: error.stack,
         };
     }
-};
+}

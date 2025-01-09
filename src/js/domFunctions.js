@@ -1,9 +1,9 @@
 import { formatDateTime } from "./helper.js";
 
+const header = document.querySelector(".header");
 const headerTime = document.querySelector(".time");
 const outputForecast = document.querySelector(".output-forecast");
 const searchImg = document.querySelector(".search-city");
-const locationEle = document.querySelector(".location");
 const tempDescription = document.getElementById("temp-description");
 const ariaLive = document.getElementById("confirmation");
 
@@ -17,19 +17,27 @@ export function updateTime() {
 }
 
 export function displayError(error) {
-    const output = document.querySelector(".output");
-    if (output) outputForecast.removeChild(output);
+    searchImg.classList.add("hidden");
+    deleteDomElements();
+
     outputForecast.insertAdjacentHTML(
         "beforeend",
         `<div class="output fade-in">${error}</div>`
     );
 
-    searchImg.classList.add("hidden");
-    if (locationEle) locationEle.classList.add("hidden");
-    if (tempDescription) tempDescription.classList.add("hidden");
-
     // errors for screen reader
     ariaLive.textContent = error;
+}
+
+export function deleteDomElements() {
+    const location = document.querySelector(".location");
+    if (location) header.removeChild(location);
+
+    const todayForecast = document.querySelector(".today-forecast");
+    if (todayForecast) tempDescription.removeChild(todayForecast);
+
+    const output = document.querySelector(".output");
+    if (output) outputForecast.removeChild(output);
 }
 
 export function toggleSpinner(icon) {

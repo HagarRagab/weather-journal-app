@@ -20,12 +20,13 @@ export default async function fetchForecastData(searchBy = "") {
             throw new Error("Cannot get your location");
 
         // send url object to serverless function
-        const weatherRes = fetch("./.netlify/functions/get_weather", {
+        const weatherRes = await fetch("/.netlify/functions/get_weather", {
             method: "POST",
             body: JSON.stringify(urlDataObj),
         });
         if (!weatherRes.ok) throw new Error("Cannot get weather information.");
         const data = await weatherRes.json();
+        if (data.cod === "404") throw new Error(data.message);
 
         const weeklyForecast = data.list
             .filter((forecast) => forecast.dt_txt.includes("12:00:00"))

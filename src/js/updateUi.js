@@ -1,4 +1,5 @@
 import { measurementSymbols } from "./measurementUnit.js";
+import { deleteDomElements } from "./domFunctions.js";
 
 const header = document.querySelector(".header");
 const tempDescription = document.getElementById("temp-description");
@@ -54,7 +55,7 @@ const generateMarkupDescription = function (
             </div>
             <div class="humidity">
                 <svg>
-                    <use href="icons.svg#humidity"></use>
+                    <use href="./img/icons.svg#humidity"></use>
                 </svg>
                 <div>
                     <p>Humidity</p>
@@ -63,7 +64,7 @@ const generateMarkupDescription = function (
             </div>
             <div class="wind">
                 <svg>
-                    <use href="icons.svg#wind"></use>
+                    <use href="./img/icons.svg#wind"></use>
                 </svg>
                 <div>
                     <p>Wind speed</p>
@@ -80,7 +81,7 @@ const generateMarkupLocation = (city, country) => {
             <p class="city">${city}</p>
             <p class="country">${country}</p>
             <svg>
-                <use href="./src/img/icons.svg#location"></use>
+                <use href="./img/icons.svg#location"></use>
             </svg>
         </div>
     `;
@@ -88,24 +89,19 @@ const generateMarkupLocation = (city, country) => {
 
 export default async function updateUi(data) {
     const { tempUnitSymbol, windSpeedUnitSymbol } = measurementSymbols();
+    searchImg.classList.add("hidden");
+    deleteDomElements();
 
-    const location = document.querySelector(".location");
-    if (location) header.removeChild(location);
     header.insertAdjacentHTML(
         "beforeend",
         generateMarkupLocation(data.city, data.country)
     );
 
-    const todayForecast = document.querySelector(".today-forecast");
-    if (todayForecast) tempDescription.removeChild(todayForecast);
     tempDescription.insertAdjacentHTML(
         "beforeend",
         generateMarkupDescription(data, tempUnitSymbol, windSpeedUnitSymbol)
     );
 
-    const output = document.querySelector(".output");
-    searchImg.classList.add("hidden");
-    if (output) outputForecast.removeChild(output);
     outputForecast.insertAdjacentHTML(
         "beforeend",
         generateMarkupOutput(data, tempUnitSymbol)

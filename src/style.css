@@ -33,7 +33,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("../public/peakpx.jpg");
+    background-image: url("./img/peakpx.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-color: rgba(0, 0, 0, 0.4);
